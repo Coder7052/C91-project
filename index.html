@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>Maths Quiz</title>
+        <style>
+            #start {
+                height:50px;
+                 width: 150px;
+                 background-image:linear-gradient(#7b23ad,#3a4970);
+                 color:white;
+                 font-size: 20;
+            }
+            #div1{
+                background-color:rgba(173, 29, 142, 0.363);
+                height:300px;
+                width:450px;
+            }
+            body{
+                background-image:linear-gradient(hotpink,cyan);
+            }
+        </style>
+    </head>
+    <body>
+        
+        <center>
+        <h1 style="color:lime">Math Quiz</h1> 
+        <br>
+        
+            <h2 style="color:cyan">Score:</h2>
+            <h2 id="score" style="color:cyan"></h2>
+        
+        <br>
+        <br>
+        <br>
+
+        <button id="start" type="button" onclick="Play()">Start!</button>
+        <br>
+        <br>
+        <div  id="div1">
+            <h2 style="color:blue">Whats.......</h2>
+            <h2 style="color:blue" id="question"></h2>
+            <h2 style="color:blue" > Write the Answer!</h2>
+            <input style="color:blue; background-color: cyan; height:50px; font-size:20;" type="number" disabled id="answer_input" placeholder="Write Answer here">
+            
+            <button style="color:blue; background-color: hotpink;height:50px; font-size:20;"type="button" id="button2" disabled onclick="Submit()">Submit</button>
+            <br>
+            <br>
+            <br>
+            <h2 id="result"></h2>
+        </div>
+        </center>
+        <script>
+            var score = 0;
+            function Play(){
+                document.getElementById("result").innerHTML = "";
+                var disabled_input = document.getElementById("answer_input").disabled = false;
+               var disabled_button = document.getElementById("button2").disabled = false;
+                              num1 = Math.floor((Math.random() * 50) + 10);
+                          console.log("Number 1 = " + num1);
+                              num2 = Math.floor((Math.random() * 50) + 10);
+                              console.log("Number 2 = " + num2);
+        
+                         var question = document.getElementById("question").innerHTML = num1 + " + " + num2 + " ?";
+                        answer = num1 + num2;
+                console.log("Answer = " + answer);
+                document.getElementById("start").disabled = true;
+                document.getElementById("start").innerHTML = "Next Sum";
+            }
+            function Submit(){
+                var check = document.getElementById("answer_input").value;
+                if (check == ""){
+                }
+                else{
+                var player_answer = document.getElementById("answer_input").value;
+                if(player_answer == answer) {
+                    var answer_result = document.getElementById("result").innerHTML = "🎉Correct Answer!🎉"
+                    document.getElementById("answer_input").disabled = true;
+                        document.getElementById("button2").disabled = true;
+                        document.getElementById("start").disabled = false;
+                        document.getElementById("answer_input").value = "";                        
+                        score = document.getElementById("score").innerHTML = score + 1;
+                                            }
+                else{
+                        document.getElementById("result").innerHTML = "Wrong Answer! The answer was "+ answer + ".But dont give up, I'm sure you'll get the next one right!";
+                        document.getElementById("answer_input").disabled = true;
+                        document.getElementById("button2").disabled = true;
+                        document.getElementById("start").disabled = false;
+                        document.getElementById("answer_input").value = "";
+                }
+             }
+            }
+        </script>
+    </body>
+</html>
